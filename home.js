@@ -52,9 +52,10 @@ function latestPaymentForm(j = 5) {
   const latestPaymentDiv = document.getElementById("latest-payment-container");
   latestPaymentDiv.innerText = "";
   let i = 0;
-  for (const data of transactionData) {
-    const div = document.createElement("div");
-    div.innerHTML = `
+  if (transactionData.length !== 0) {
+    for (const data of transactionData) {
+      const div = document.createElement("div");
+      div.innerHTML = `
       <div id="latest-payment-container">
           <div
             class="bg-white rounded-lg p-3 flex justify-between items-center my-3 hover:shadow-lg transition delay duration-300 ease-in-out hover:-translate-y-1"
@@ -72,12 +73,13 @@ function latestPaymentForm(j = 5) {
           </div>
         </div>
       `;
-    if (i == j) {
-      break;
-    }
-    i++;
+      if (i == j) {
+        break;
+      }
+      i++;
 
-    latestPaymentDiv.appendChild(div);
+      latestPaymentDiv.appendChild(div);
+    }
   }
 }
 
@@ -273,10 +275,11 @@ document
     transactionDiv.innerText = "";
     let transactionData = getItem();
 
-    for (const data of transactionData) {
-      const div = document.createElement("div");
+    if (transactionData.length !== 0) {
+      for (const data of transactionData) {
+        const div = document.createElement("div");
 
-      div.innerHTML = `
+        div.innerHTML = `
       <div id="transaction-container">
           <div
             class="bg-white rounded-lg p-3 flex justify-between items-center my-3 hover:shadow-lg transition delay duration-300 ease-in-out hover:-translate-y-1"
@@ -295,7 +298,8 @@ document
         </div>
       `;
 
-      transactionDiv.appendChild(div);
+        transactionDiv.appendChild(div);
+      }
     }
   });
 
