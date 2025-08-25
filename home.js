@@ -40,7 +40,7 @@ function handleToggleDiv(id) {
 }
 
 function getItem() {
-  return JSON.parse(localStorage.getItem("dataStorage"));
+  return JSON.parse(localStorage.getItem("dataStorage")) || [];
 }
 
 function setItem(storeData) {
